@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import TopLayout from "@layouts/TopLayout.astro";
+import BottomLayout from "@layouts/BottomLayout.astro";
+import Projects from "@components/Projects";
+import { PROJECTS } from "@consts";
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const tags = [
+  ...new Set(projects.flatMap((project) => project.data.tags)),
+].sort((a, b) => a.localeCompare(b));
+---
+
+<PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+  <TopLayout>
+    <div class="animate page-heading">
+      {PROJECTS.TITLE}
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <p>水protocol.comはリンクフリーです。</p>
+      <p>
+        ホームページ(https://水protocol.com)へのバナーは下のをお使いください。m(__)m
+      </p>
+
+      <div class="mt-5">
+        <a href="" target="_blank" rel="noopener noreferrer">
+          <img src="/images/mebaner.png" style="width: 70%;" />
+        </a>
+      </div>
+
+      <div class="mt-12">
+        <a href="https://www.ヲルタナスタジオ.com/" target="_blank" rel="noopener noreferrer">
+          <img src="/images/alternastudio.png" style="width: 70%;" />
+        </a>
+      </div>
+
+      <div class="mt-5">
+        <a href="https://alternadenki.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <img src="/images/alternaelectron.png" style="width: 70%;" />
+        </a>
+      </div>
+    </div>
+  </BottomLayout>
+</PageLayout>
