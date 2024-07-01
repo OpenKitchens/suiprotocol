@@ -4,7 +4,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
 import Projects from "@components/Projects";
-import { PROJECTS } from "@consts";
+import { BANER } from "@consts";
 
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
@@ -15,10 +15,10 @@ const tags = [
 ].sort((a, b) => a.localeCompare(b));
 ---
 
-<PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+<PageLayout title={BANER.TITLE} description={BANER.DESCRIPTION}>
   <TopLayout>
     <div class="animate page-heading">
-      {PROJECTS.TITLE}
+      {BANER.TITLE}
     </div>
   </TopLayout>
   <BottomLayout>

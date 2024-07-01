@@ -20,7 +20,7 @@ export const DIARY: Page = {
 }
 
 // Projects Page 
-export const PROJECTS: Page = {
+export const BANER: Page = {
   TITLE: "バナー同盟",
   DESCRIPTION: "懐かしのバナー同盟を",
 }
